@@ -1,10 +1,6 @@
 .field {
   margin-bottom: 0.5em;
-}
-.field input {
-  display: block;
-}
-.field label {
-  display: block;
-  margin-bottom: 0.25em;
+  display: flex;
+  flex-direction: column;
+  max-width: max-content;
 }
