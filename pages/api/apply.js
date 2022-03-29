@@ -4,6 +4,7 @@ import { formDataMiddleware } from "../../lib/middleware";
 
 export const config = {
   api: {
+    // tell next.js to skip body parsing.
     bodyParser: false,
   },
 };
@@ -14,6 +15,7 @@ handler.use(formDataMiddleware);
 handler.post(async function handler(req, res) {
   console.log(req.body);
   console.log(req.files);
+
   const doc = {
     _type: "person",
     firstName: "",
@@ -23,6 +25,7 @@ handler.post(async function handler(req, res) {
   };
   const person = await client.create(doc);
   console.log("Person created, id: ", person?._id);
+
   res.status(200).send("Thank you!");
 });
 
