@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div>
       <h1>Job application</h1>
-      <form action="/api/apply" method="POST">
+      <form action="/api/apply" method="post" encType="multipart/form-data">
         <div className="field">
           <label htmlFor="email">Email</label>
           <input id="email" type="email" required></input>
