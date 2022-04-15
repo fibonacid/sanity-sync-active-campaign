@@ -13,14 +13,18 @@ const handler = nc();
 handler.use(formDataMiddleware);
 
 handler.post(async function handler(req, res) {
-  console.log(req.body);
-  console.log(req.files);
+  const { body, files } = req;
+
+  // multiparty converts every field into an array
+  const [firstName] = body.firstName || [];
+  const [lastName] = body.lastName || [];
+  const [email] = body.email || [];
 
   const doc = {
     _type: "person",
-    firstName: "",
-    lastName: "",
-    email: "",
+    firstName,
+    lastName,
+    email,
     files: [],
   };
   const person = await client.create(doc);
