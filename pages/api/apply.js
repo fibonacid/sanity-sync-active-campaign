@@ -13,13 +13,6 @@ export const config = {
 const handler = nc();
 handler.use(formDataMiddleware);
 
-async function uploadFile(file) {
-  const blob = await readFile(file?.path);
-  return client.assets.upload("file", blob, {
-    filename: file?.originalFilename || undefined,
-  });
-}
-
 handler.post(async function handler(req, res) {
   const { body, files } = req;
 
